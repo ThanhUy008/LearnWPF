@@ -1,0 +1,38 @@
+﻿<Window x:Class="Employees.View.EditEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Employees"
+        mc:Ignorable="d"
+        Title="EditEmployee" Height="450" Width="500"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:RelativeToAbsolutePath x:Key="pathCoverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Source="{Binding avatar,Converter={StaticResource pathCoverter}}" Height="100" Width="135" Grid.Column ="0" Grid.Row="0" Grid.ColumnSpan="2"></Image>
+        <Label Content="Full name" Grid.Column="0" Grid.Row="1"></Label>
+        <TextBox x:Name="tb_fullName" Text="{Binding fullName}" Grid.Column="1" Grid.Row="1"></TextBox>
+        <Label Content="Address" Grid.Column="0" Grid.Row="2"></Label>
+        <TextBox x:Name="tb_address" Text="{Binding address}" Grid.Column="1" Grid.Row="2"></TextBox>
+        <Label Content="Email" Grid.Column="0" Grid.Row="3"></Label>
+        <TextBox x:Name="tb_email" Text="{Binding email}" Grid.Column="1" Grid.Row="3"></TextBox>
+        <Label Content="Phone" Grid.Column="0" Grid.Row="4"></Label>
+        <TextBox x:Name="tb_phoneNum" Text="{Binding phoneNum}" Grid.Column="1" Grid.Row="4"></TextBox>
+
+        <Button Content="Change" Click="editPhone_Click" Grid.Column="1" Grid.Row="5" Height="20" Width="100"></Button>
+    </Grid>
+</Window>

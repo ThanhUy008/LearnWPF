@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="img\**" />
+    <EmbeddedResource Remove="img\**" />
+    <None Remove="img\**" />
+    <Page Remove="img\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="View\img\add.png" />
+    <None Remove="View\img\del.png" />
+    <None Remove="View\img\employicon.png" />
+    <None Remove="View\img\update.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fluent.Ribbon" Version="8.0.3" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="View\img\add.png" />
+    <Resource Include="View\img\del.png" />
+    <Resource Include="View\img\employicon.png" />
+    <Resource Include="View\img\update.jpg" />
+  </ItemGroup>
+
+</Project>

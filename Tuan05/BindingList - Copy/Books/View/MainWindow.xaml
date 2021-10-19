@@ -1,0 +1,88 @@
+﻿<Fluent:RibbonWindow  x:Class="Books.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Books"
+        xmlns:Fluent="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon" 
+        mc:Ignorable="d"
+        Title="Bookshelf" Height="650" Width="800"
+        Loaded="MainWindow_Loaded"
+        Icon="./img/bookshelficon.jpg"
+                      >
+
+    <Window.Resources>
+        <local:RelativeToAbsolutePath x:Key="pathCoverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Fluent:Ribbon Grid.Row="0">
+            <Fluent:Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton x:Name ="Save" SmallImageSource="./img/save.ico"/>
+                </RibbonQuickAccessToolBar>
+            </Fluent:Ribbon.QuickAccessToolBar>
+            <Fluent:Ribbon.ApplicationMenu>
+                <Fluent:RibbonApplicationMenu>
+                    <Fluent:RibbonApplicationMenuItem Header="Option"></Fluent:RibbonApplicationMenuItem>
+                </Fluent:RibbonApplicationMenu>
+            </Fluent:Ribbon.ApplicationMenu>
+            <Fluent:RibbonTab Header="Home" KeyTip="H" >
+                <Fluent:RibbonGroup x:Name="Add" Header="Add new">
+                    <Fluent:RibbonButton LargeImageSource="./img/add.png" Click="Add_Click" />
+                </Fluent:RibbonGroup>
+                <Fluent:RibbonGroup x:Name="Edit" Header="Edit book">
+                    <Fluent:RibbonButton LargeImageSource="./img/update.jpg" Click="contextMenu_EditClick" />
+                </Fluent:RibbonGroup>
+                <Fluent:RibbonGroup x:Name="Delete" Header="Delete">
+                    <Fluent:RibbonButton LargeImageSource="./img/del.png"  Click="contextMenu_DeleteClick"/>
+                </Fluent:RibbonGroup>
+            </Fluent:RibbonTab>
+            <Fluent:RibbonTab Header="EmptyTemplate" KeyTip="E">
+            </Fluent:RibbonTab>
+            
+        </Fluent:Ribbon>
+        <ListView x:Name="bookList" Width="795" Height="500" Grid.Row="1">
+            <ListView.Resources>
+                <ContextMenu x:Key="myContextMenu">
+                    <MenuItem Header="Edit" Click="contextMenu_EditClick"></MenuItem>
+                    <MenuItem Header="Delete" Click="contextMenu_DeleteClick"></MenuItem>
+                </ContextMenu>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource myContextMenu}">
+
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header= "Cover" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding coverImg,Converter={StaticResource pathCoverter}}" Height="100" Width="135"></Image>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name" Width="300"  >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding bookName}" Margin="30 0 0 0"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Author" Width="230" DisplayMemberBinding="{Binding author}"/>
+
+                    <GridViewColumn Header="Public Year" Width="95" DisplayMemberBinding="{Binding publicYear}" />
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+    </Grid>
+
+</Fluent:RibbonWindow>

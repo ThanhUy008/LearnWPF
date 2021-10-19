@@ -1,0 +1,34 @@
+﻿<Window x:Class="Books.EditBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Books"
+        mc:Ignorable="d"
+        Title="EditBook" Height="350" Width="500"
+        Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:RelativeToAbsolutePath x:Key="pathCoverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Source="{Binding coverImg,Converter={StaticResource pathCoverter}}" Height="100" Width="135" Grid.Column ="0" Grid.Row="0" Grid.ColumnSpan="2"></Image>
+        <Label Content="Book name" Grid.Column="0" Grid.Row="1"></Label>
+        <TextBox x:Name="tb_bookName" Text="{Binding bookName}" Grid.Column="1" Grid.Row="1"></TextBox>
+        <Label Content="Book Author" Grid.Column="0" Grid.Row="2"></Label>
+        <TextBox x:Name="tb_author" Text="{Binding author}" Grid.Column="1" Grid.Row="2"></TextBox>
+        <Label Content="Public Year" Grid.Column="0" Grid.Row="3"></Label>
+        <TextBox x:Name="tb_publicYear" Text="{Binding publicYear}" Grid.Column="1" Grid.Row="3"></TextBox>
+        <Button Content="Change" Click="editBook_Click" Grid.Column="1" Grid.Row="4" Height="20" Width="100"></Button>
+    </Grid>
+</Window>

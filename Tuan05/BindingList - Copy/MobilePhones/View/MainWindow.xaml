@@ -1,0 +1,82 @@
+﻿<Fluent:RibbonWindow  x:Class="MobilePhones.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MobilePhones"
+        xmlns:Fluent="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon"               
+        mc:Ignorable="d"
+        Title="Phone store" Height="650" Width="1000"
+                      Icon="./img/phoneicon.png"
+                      Loaded="MainWindow_Loaded">
+    <Window.Resources>
+        <local:RelativeToAbsolutePath x:Key="pathCoverter"></local:RelativeToAbsolutePath>
+        <local:ToVNDConverter x:Key="moneyCoverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Fluent:Ribbon Grid.Row="0">
+            
+            <Fluent:Ribbon.ApplicationMenu>
+                <Fluent:RibbonApplicationMenu>
+                    <Fluent:RibbonApplicationMenuItem Header="Option"></Fluent:RibbonApplicationMenuItem>
+                </Fluent:RibbonApplicationMenu>
+            </Fluent:Ribbon.ApplicationMenu>
+            <Fluent:RibbonTab Header="Home" KeyTip="H" >
+                <Fluent:RibbonGroup x:Name="Add" Header="Add new">
+                    <Fluent:RibbonButton  Click="Add_Click" LargeImageSource="./img/add.png"/>
+                </Fluent:RibbonGroup>
+                <Fluent:RibbonGroup x:Name="Edit" Header="Edit phone">
+                    <Fluent:RibbonButton Click="contextMenu_EditClick" LargeImageSource="./img/update.jpg"/>
+                </Fluent:RibbonGroup>
+                <Fluent:RibbonGroup x:Name="Delete" Header="Delete">
+                    <Fluent:RibbonButton  Click="contextMenu_DeleteClick" LargeImageSource="./img/del.png"/>
+                </Fluent:RibbonGroup>
+            </Fluent:RibbonTab>
+            <Fluent:RibbonTab Header="EmptyTemplate" KeyTip="E">
+            </Fluent:RibbonTab>
+
+        </Fluent:Ribbon>
+        <ListView x:Name="phoneList" Width="1000" Height="500" Grid.Row="1">
+            <ListView.Resources>
+                <ContextMenu x:Key="myContextMenu">
+                    <MenuItem Header="Edit" Click="contextMenu_EditClick"></MenuItem>
+                    <MenuItem Header="Delete" Click="contextMenu_DeleteClick"></MenuItem>
+                </ContextMenu>
+            </ListView.Resources>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource myContextMenu}">
+
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header= "Image" Width="150">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding phoneImg,Converter={StaticResource pathCoverter}}" Height="100" Width="135"></Image>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Phone Name" Width="300"  >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding phoneName}" Margin="30 0 0 0"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Manufacture" Width="200" DisplayMemberBinding="{Binding manufacture}"/>
+
+                    <GridViewColumn Header="Price" Width="350" DisplayMemberBinding="{Binding price, Converter={StaticResource moneyCoverter}}" />
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+    </Grid>
+</Fluent:RibbonWindow>
