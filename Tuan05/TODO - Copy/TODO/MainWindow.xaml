@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TODO"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400"
+        Title="MainWindow" Height="450" Width="370"
         Loaded="MainWindow_Loaded">
     <Grid>
         <Canvas>
             
-            <ListView x:Name="taskList" Width="395" Height="400">
+            <ListView x:Name="taskList" Width="370" Height="380">
                 <ListView.Resources>
                     <ContextMenu x:Key="myContextMenu">
-                        <MenuItem Header="Edit"></MenuItem>
-                        <MenuItem Header="Delete"></MenuItem>
+                        
+                        <MenuItem Header="Edit" Click="contextMenu_UpdateBtn_Click"></MenuItem>
+                        <MenuItem Header="Delete" Click="contextMenu_DeleteBtn_Click"></MenuItem>
                     </ContextMenu>
                 </ListView.Resources>
                 <ListView.ItemContainerStyle>
@@ -28,11 +29,12 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="STT" Width="50" DisplayMemberBinding="{Binding STT}" />
-                        <GridViewColumn Header="Task Name" Width="340" DisplayMemberBinding="{Binding TaskName}" />
+                        <GridViewColumn Header="Task Name" Width="325" DisplayMemberBinding="{Binding TaskName}" />
                     </GridView>
                 </ListView.View>
                 
             </ListView>
+            <Button Content="Add" Width="50" Height="25" Canvas.Left="170" Canvas.Top="385" Click="AddBtn_Click"></Button>
         </Canvas>
     </Grid>
 </Window>

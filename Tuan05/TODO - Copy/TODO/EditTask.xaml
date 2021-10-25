@@ -1,0 +1,21 @@
+﻿<Window x:Class="TODO.EditTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TODO"
+        mc:Ignorable="d"
+        Title="AddTask" Height="250" Width="400"
+        Loaded="Window_Loaded">
+
+    <Grid>
+        <Canvas>
+            <Label Content="Task order" Width="70" Height="30" Canvas.Left="20" Canvas.Top="40"></Label>
+            <TextBox x:Name="tb_order" Text="{Binding STT}"  Width="240" Height="30" Canvas.Left="120" Canvas.Top="40"></TextBox>
+            <Label Content="Task name" Width="70" Height="30" Canvas.Left="20" Canvas.Top="102"></Label>
+            <TextBox x:Name="tb_name" Text="{Binding TaskName}" Width="240" Height="30" Canvas.Left="120" Canvas.Top="102"></TextBox>
+            <Button Content="Edit task" Width="80" Height="20" Margin="170,176,150,38" Click="Button_Click"></Button>
+        </Canvas>
+    </Grid>
+
+</Window>
