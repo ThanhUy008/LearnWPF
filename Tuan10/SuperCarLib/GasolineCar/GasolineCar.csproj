@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>G:\Coding\Code C#\WPF Code C#\Tuan10\SuperCarLib\ConsoleApp1\bin\</OutputPath>
+	</PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperCarLib\SuperCarLib.csproj" />
+  </ItemGroup>
+
+</Project>

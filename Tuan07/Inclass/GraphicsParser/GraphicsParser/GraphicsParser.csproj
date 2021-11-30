@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="IShapeTemp.cs" />
+    <Compile Remove="IShapeToStringDataConverterTemp.cs" />
+    <Compile Remove="IShapeToStringUIConverterTemp.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ellipse\Ellipse.csproj" />
+    <ProjectReference Include="..\Line\Line.csproj" />
+    <ProjectReference Include="..\MyLib\MyLib.csproj" />
+    <ProjectReference Include="..\Point2D\Point2D.csproj" />
+    <ProjectReference Include="..\Rectangle\Rectangle.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="graphics.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
